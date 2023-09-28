@@ -5,7 +5,10 @@
  * @param {string} fahren temperature in degrees F
  * @returns {number} the number of degrees C
  */
-function convertToCelsius(fahren) {}
+function convertToCelsius(fahren) {
+  let celc = (fahren- 32) * 5/9;
+  return celc
+}
 
 /**
  * Takes both numbers (F, C) and display a message with
@@ -22,14 +25,48 @@ function convertToCelsius(fahren) {}
  * @param {number} fahren
  * @param {number} celc
  */
-function createMessage(fahren, celc) {}
+function createMessage(fahren, celc) {
+  let feel;
+  if (celc < 32) {
+    feel = "very cold";
+  } else if (celc < 64) {
+    feel = "cold";
+  } else if (celc < 86) {
+    feel = "warm";
+  } else if (celc < 100) {
+    feel = "hot";
+  }
+  let message = `${fahren} degrees Fahrenheit is ${celc.toFixed(2)}
+  degrees Celcius, which feels ${feel}.`;
+  return message;
+}
 
 /**
  * Takes a number and returns a random integer from 0 to the limit
  * @param {number} limit
  * @returns {number} a number between 0 and the int passed in
  */
-function rand(limit) {}
+function rand(limit) {
+  return Math.floor(Math.random() * (limit + 1));
+}
+// Main function to interact with the user
+function main() {
+  // Prompt user for Fahrenheit temperature input
+  let input = parseFloat(prompt("Enter a temperature in Fahrenheit:"));
+
+  if (!isNaN(input)) {
+    // Convert Fahrenheit to Celcius
+    let celc = convertToCelsius(input);
+    // Create a message based on the temperature
+    let message = createMessage(input, celc);
+    // Display the message
+    alert(message);
+  } else {
+      alert("Invalid input. Please enter a valid number.");
+  }
+}
+// Call the main function to start the program
+main();
 
 // -------------------- DONT NOT CHANGE THE CODE BELOW ---------------------- //
 
